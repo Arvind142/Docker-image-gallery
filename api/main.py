@@ -7,7 +7,7 @@ from flask_cors import CORS
 load_dotenv(dotenv_path="./.env.local")
 
 UNSPLASH_URL = "https://api.unsplash.com/photos/random"
-UNSPLASH_KEY = os.environ.get("UNSPLASH_KEY", "")
+UNSPLASH_KEY = os.environ.get("UNSPLASH_KEY", "")[2:-9]
 DEBUG = bool(os.environ.get("DEBUG", True))
 
 if not UNSPLASH_KEY:
