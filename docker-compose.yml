@@ -17,4 +17,22 @@ services:
       - '5050:5050'
     volumes:
       - ./api:/app
-    
+  mongo:
+    image: mongo:latest
+    restart: always
+    volumes:
+     - $PWD/data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+  mongo-express:
+    image: mongo-express:latest
+    restart: always
+    environment:
+     - ME_CONFIG_MONGODB_SERVER=mongo
+     - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+     - ME_CONFIG_MONGODB_ADMINPASSWORD=admin
+    depends_on:
+      - mongo
+    ports:
+      - '8081:8081'
