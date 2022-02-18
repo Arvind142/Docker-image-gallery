@@ -21,7 +21,7 @@ services:
     image: mongo:latest
     restart: always
     volumes:
-     - $PWD/data:/data/db
+     - mongodb_data:/data/db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=admin
@@ -36,3 +36,7 @@ services:
       - mongo
     ports:
       - '8081:8081'
+
+volumes:
+  mongodb_data:
+  #to get this volume data type 'docker volume ls'
